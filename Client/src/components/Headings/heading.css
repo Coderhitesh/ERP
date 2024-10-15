@@ -1,0 +1,11 @@
+.heading-tag{
+    font-size: 3rem;
+    color: rgb(255, 247, 247);
+   margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.head-div{
+    position: relative;
+    left: -30px;
+}

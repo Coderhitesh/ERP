@@ -1,0 +1,294 @@
+[
+    {
+        "OrderId": "OrderForRaw2266541",
+        "ProductName": "Mobile",
+        "RawNeeded": [
+            {
+                "quantity": 25,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 25,
+                "name": "Metal"
+            },
+            {
+                "quantity": 25,
+                "name": "Glass"
+            },
+            {
+                "quantity": 25,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 25,
+                "name": "Battery"
+            },
+            {
+                "quantity": 25,
+                "name": "Strap"
+            }
+        ],
+        "Urgent": true,
+        "OrderDate": "22 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw785432",
+        "ProductName": "Laptop",
+        "RawNeeded": [
+            {
+                "quantity": 30,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 40,
+                "name": "Metal"
+            },
+            {
+                "quantity": 20,
+                "name": "Glass"
+            },
+            {
+                "quantity": 35,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 30,
+                "name": "Battery"
+            },
+            {
+                "quantity": 15,
+                "name": "Keyboard"
+            }
+        ],
+        "Urgent": false,
+        "OrderDate": "23 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw112233",
+        "ProductName": "Television",
+        "RawNeeded": [
+            {
+                "quantity": 50,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 60,
+                "name": "Metal"
+            },
+            {
+                "quantity": 40,
+                "name": "Glass"
+            },
+            {
+                "quantity": 55,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 45,
+                "name": "Screen"
+            }
+        ],
+        "Urgent": true,
+        "OrderDate": "24 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw443322",
+        "ProductName": "Tablet",
+        "RawNeeded": [
+            {
+                "quantity": 20,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 25,
+                "name": "Metal"
+            },
+            {
+                "quantity": 20,
+                "name": "Glass"
+            },
+            {
+                "quantity": 30,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 25,
+                "name": "Battery"
+            },
+            {
+                "quantity": 10,
+                "name": "Screen"
+            }
+        ],
+        "Urgent": false,
+        "OrderDate": "25 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw554433",
+        "ProductName": "Smartwatch",
+        "RawNeeded": [
+            {
+                "quantity": 15,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 20,
+                "name": "Metal"
+            },
+            {
+                "quantity": 10,
+                "name": "Glass"
+            },
+            {
+                "quantity": 15,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 10,
+                "name": "Battery"
+            },
+            {
+                "quantity": 5,
+                "name": "Strap"
+            }
+        ],
+        "Urgent": true,
+        "OrderDate": "26 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw987654",
+        "ProductName": "Speaker",
+        "RawNeeded": [
+            {
+                "quantity": 20,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 25,
+                "name": "Metal"
+            },
+            {
+                "quantity": 20,
+                "name": "Glass"
+            },
+            {
+                "quantity": 20,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 15,
+                "name": "Speaker Cone"
+            },
+            {
+                "quantity": 10,
+                "name": "Wires"
+            }
+        ],
+        "Urgent": false,
+        "OrderDate": "27 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw123456",
+        "ProductName": "Camera",
+        "RawNeeded": [
+            {
+                "quantity": 25,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 30,
+                "name": "Metal"
+            },
+            {
+                "quantity": 20,
+                "name": "Glass"
+            },
+            {
+                "quantity": 30,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 20,
+                "name": "Lens"
+            }
+        ],
+        "Urgent": true,
+        "OrderDate": "28 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw666777",
+        "ProductName": "Headphones",
+        "RawNeeded": [
+            {
+                "quantity": 15,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 20,
+                "name": "Metal"
+            },
+            {
+                "quantity": 10,
+                "name": "Wire"
+            },
+            {
+                "quantity": 15,
+                "name": "Speaker"
+            },
+            {
+                "quantity": 10,
+                "name": "Cushion"
+            }
+        ],
+        "Urgent": false,
+        "OrderDate": "29 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw999000",
+        "ProductName": "Table",
+        "RawNeeded": [
+            {
+                "quantity": 40,
+                "name": "Wood"
+            },
+            {
+                "quantity": 30,
+                "name": "Metal"
+            },
+            {
+                "quantity": 20,
+                "name": "Glass"
+            }
+        ],
+        "Urgent": true,
+        "OrderDate": "30 April 2024"
+    },
+    {
+        "OrderId": "OrderForRaw123789",
+        "ProductName": "Monitor",
+        "RawNeeded": [
+            {
+                "quantity": 30,
+                "name": "Plastic"
+            },
+            {
+                "quantity": 40,
+                "name": "Metal"
+            },
+            {
+                "quantity": 25,
+                "name": "Glass"
+            },
+            {
+                "quantity": 35,
+                "name": "Circuit Board"
+            },
+            {
+                "quantity": 20,
+                "name": "Screen"
+            }
+        ],
+        "Urgent": false,
+        "OrderDate": "1 May 2024"
+    }
+]

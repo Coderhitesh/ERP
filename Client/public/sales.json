@@ -1,0 +1,411 @@
+[
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000001",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "John Doe",
+            "CompanyName": "ABC Inc.",
+            "ContactDetails": "123-456-7890",
+            "email": "john@example.com"
+        },
+        "shipTo": {
+            "Name": "Jane Smith",
+            "CompanyName": "XYZ Corp.",
+            "ContactDetails": "987-654-3210",
+            "email": "jane@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO123",
+        "salesPerson": "Alice",
+        "products": [
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            },
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            },
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            }
+        ],
+        "Total": 1125,
+        "TotalDiscount": 0,
+        "Gst": 202.5,
+        "OtherFees": 56.25,
+        "FinalTotal": 1271.25
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000002",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "Alice Johnson",
+            "CompanyName": "LMN Ltd.",
+            "ContactDetails": "456-789-0123",
+            "email": "alice@example.com"
+        },
+        "shipTo": {
+            "Name": "Bob Brown",
+            "CompanyName": "PQR Corp.",
+            "ContactDetails": "789-012-3456",
+            "email": "bob@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO456",
+        "salesPerson": "Bob",
+        "products": [
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            }
+        ],
+        "Total": 894,
+        "TotalDiscount": 33,
+        "Gst": 161.28,
+        "OtherFees": 44.7,
+        "FinalTotal": 1065.98
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000001",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "John Doe",
+            "CompanyName": "ABC Inc.",
+            "ContactDetails": "123-456-7890",
+            "email": "john@example.com"
+        },
+        "shipTo": {
+            "Name": "Jane Smith",
+            "CompanyName": "XYZ Corp.",
+            "ContactDetails": "987-654-3210",
+            "email": "jane@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO123",
+        "salesPerson": "Alice",
+        "products": [
+            {
+                "id": "P001",
+                "NameOfProduct": "Product A",
+                "Quantity": "10",
+                "UnitPrice": "50",
+                "Discount": "5",
+                "Description": "Description for Product A"
+            },
+            {
+                "id": "P002",
+                "NameOfProduct": "Product B",
+                "Quantity": "5",
+                "UnitPrice": "75",
+                "Discount": "0",
+                "Description": "Description for Product B"
+            }
+        ],
+        "Total": 1125,
+        "TotalDiscount": 0,
+        "Gst": 202.5,
+        "OtherFees": 56.25,
+        "FinalTotal": 1271.25
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000002",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "Alice Johnson",
+            "CompanyName": "LMN Ltd.",
+            "ContactDetails": "456-789-0123",
+            "email": "alice@example.com"
+        },
+        "shipTo": {
+            "Name": "Bob Brown",
+            "CompanyName": "PQR Corp.",
+            "ContactDetails": "789-012-3456",
+            "email": "bob@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO456",
+        "salesPerson": "Bob",
+        "products": [
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            }
+        ],
+        "Total": 894,
+        "TotalDiscount": 33,
+        "Gst": 161.28,
+        "OtherFees": 44.7,
+        "FinalTotal": 1065.98
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000001",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "John Doe",
+            "CompanyName": "ABC Inc.",
+            "ContactDetails": "123-456-7890",
+            "email": "john@example.com"
+        },
+        "shipTo": {
+            "Name": "Jane Smith",
+            "CompanyName": "XYZ Corp.",
+            "ContactDetails": "987-654-3210",
+            "email": "jane@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO123",
+        "salesPerson": "Alice",
+        "products": [
+            {
+                "id": "P001",
+                "NameOfProduct": "Product A",
+                "Quantity": "10",
+                "UnitPrice": "50",
+                "Discount": "5",
+                "Description": "Description for Product A"
+            },
+            {
+                "id": "P002",
+                "NameOfProduct": "Product B",
+                "Quantity": "5",
+                "UnitPrice": "75",
+                "Discount": "0",
+                "Description": "Description for Product B"
+            }
+        ],
+        "Total": 1125,
+        "TotalDiscount": 0,
+        "Gst": 202.5,
+        "OtherFees": 56.25,
+        "FinalTotal": 1271.25
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000002",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "Alice Johnson",
+            "CompanyName": "LMN Ltd.",
+            "ContactDetails": "456-789-0123",
+            "email": "alice@example.com"
+        },
+        "shipTo": {
+            "Name": "Bob Brown",
+            "CompanyName": "PQR Corp.",
+            "ContactDetails": "789-012-3456",
+            "email": "bob@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO456",
+        "salesPerson": "Bob",
+        "products": [
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            }
+        ],
+        "Total": 894,
+        "TotalDiscount": 33,
+        "Gst": 161.28,
+        "OtherFees": 44.7,
+        "FinalTotal": 1065.98
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000001",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "John Doe",
+            "CompanyName": "ABC Inc.",
+            "ContactDetails": "123-456-7890",
+            "email": "john@example.com"
+        },
+        "shipTo": {
+            "Name": "Jane Smith",
+            "CompanyName": "XYZ Corp.",
+            "ContactDetails": "987-654-3210",
+            "email": "jane@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO123",
+        "salesPerson": "Alice",
+        "products": [
+            {
+                "id": "P001",
+                "NameOfProduct": "Product A",
+                "Quantity": "10",
+                "UnitPrice": "50",
+                "Discount": "5",
+                "Description": "Description for Product A"
+            },
+            {
+                "id": "P002",
+                "NameOfProduct": "Product B",
+                "Quantity": "5",
+                "UnitPrice": "75",
+                "Discount": "0",
+                "Description": "Description for Product B"
+            }
+        ],
+        "Total": 1125,
+        "TotalDiscount": 0,
+        "Gst": 202.5,
+        "OtherFees": 56.25,
+        "FinalTotal": 1271.25
+    },
+    {
+        "DateIssued": "2024-04-18T12:00:00Z",
+        "OrderId": "Order0000000002",
+        "CustomerId": "Customer-1",
+        "BillTo": {
+            "Name": "Alice Johnson",
+            "CompanyName": "LMN Ltd.",
+            "ContactDetails": "456-789-0123",
+            "email": "alice@example.com"
+        },
+        "shipTo": {
+            "Name": "Bob Brown",
+            "CompanyName": "PQR Corp.",
+            "ContactDetails": "789-012-3456",
+            "email": "bob@example.com"
+        },
+        "salesDate": "2024-04-18T12:00:00Z",
+        "PO": "PO456",
+        "salesPerson": "Bob",
+        "products": [
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            },
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            },
+            {
+                "id": "P003",
+                "NameOfProduct": "Product C",
+                "Quantity": "8",
+                "UnitPrice": "100",
+                "Discount": "10",
+                "Description": "Description for Product C"
+            },
+            {
+                "id": "P004",
+                "NameOfProduct": "Product D",
+                "Quantity": "3",
+                "UnitPrice": "120",
+                "Discount": "5",
+                "Description": "Description for Product D"
+            }
+        ],
+        "Total": 894,
+        "TotalDiscount": 33,
+        "Gst": 161.28,
+        "OtherFees": 44.7,
+        "FinalTotal": 1065.98
+    }
+ 
+]

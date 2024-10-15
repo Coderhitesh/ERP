@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+:root {
+  --primary: #1677ff;
+  --secondary: #faad14;
+  --text-color: #373d3f;
+  --success: #5cdbd3;
+  --text: #ff4d4f;
+}
+
+a {
+  cursor: pointer;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ml-2 {
+  margin-left: -10px !important;
+}
+
+.pointer {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pointer:nth-child(even):hover {
+  background-color: #1677ff;
+}
+
+.pointer:nth-child(odd):hover {
+  background-color: #ff6f16;
+}
+
+.margin {
+  margin-left: 35px;
+}
+
+.bg-white {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.bg{
+background-color:#3D4584;
+}
+.pointers {
+  cursor: pointer;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+  --color-blue: #3d4584;
+  --bg-w:#f3f8fe;
+  --bg-body: #E4E9F7;
+  --color-green: rgb(44, 185, 16);
+  --color-orange: orange;
+
+  --font-poppins: "Poppins", sans-serif;
+}
+
+.sideContentNav{
+  padding: 0.5rem 1rem;
+  height: 100vh;
+  overflow: scroll;
+}
+/* ------  Universal -------  */
+.main-head{
+  text-align: center;
+  background: var(--color-blue);
+  font-family: var(--font-poppins);
+  color: white;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.main-head h2{
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+.allTable table{
+  width: 100%;
+  margin: 1rem 0rem;
+}
+.allTable table td{
+  color: #373d3f;
+}
+
+.allTable table .action-btns{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.allTable table .action-btns button,
+.allTable table .action-btns a {
+  border: none;
+  outline: none;
+  padding: 0.1rem 0.3rem;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  color: white;
+  background: var(--color-orange);
+}
+.allTable table .action-btns button.update{
+  background: var(--color-green);
+}
+.allTable table .action-btns button.delete{
+  background: red;
+}
+.all-clients-container{
+  height: 100vh;
+}
+.whitespace{
+  white-space: nowrap;
+}
+.mainColor{
+  background-color: #3D4584!important;
+}
+.table-ledger{
+  font-size: 14px!important;
+}
+.white{
+  color: #E4E9F7;
+}
+.textHide{
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+.flex-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--color-blue);
+  color: white;
+}
+.flex-head h2{
+  margin-bottom: 0rem;
+}
+.flex-head a{
+  color: white;
+  text-transform: uppercase;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

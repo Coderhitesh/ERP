@@ -1,0 +1,64 @@
+.bill-preview {
+    margin: 2rem 1rem;
+    padding: 2rem 1rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    position: relative;
+    color: black;
+    font-family: var(--font-poppins);
+}
+.bill-preview h2 , 
+.bill-preview h5{
+    margin-bottom: 0rem;
+}
+.bill-preview .company-name strong{
+    font-size: 1.5rem;
+}
+.bill-preview strong{
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--color-blue);
+}
+.bill-preview .address{
+    max-width: 40%;
+}
+.bill-preview .main-table th{
+    background-color: var(--color-blue);
+    color: white !important;
+}
+.bill-preview .main-table th,
+.bill-preview .main-table td{
+    font-size: 0.9rem;
+    color: black;
+    border-color: var(--color-blue);
+}
+
+
+
+.bottom-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0rem;
+    padding: 2rem 0rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    
+}
+.bottom-btns .bt{
+    padding: 8px 15px;
+    background: var(--color-green);
+    color: white;
+    font-family: var(--font-poppins);
+}
+.bottom-btns .bt.share{
+    background: var(--color-blue);
+}
+.bottom-btns .bt i{
+    margin-left: 0.5rem;
+}
+
+
+

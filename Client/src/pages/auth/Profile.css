@@ -1,0 +1,84 @@
+.erp-profile-container {
+  display: flex;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.erp-sidebar {
+  width: 25%;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.erp-sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.erp-sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.erp-sidebar-item {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #007bff;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.erp-sidebar-item:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.erp-active {
+  background-color: rgba(0, 123, 255, 0.2);
+  font-weight: bold;
+}
+
+.erp-content {
+  width: 75%;
+  padding: 20px;
+}
+
+.erp-tab-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.erp-tab-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.erp-tab-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.erp-btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.erp-btn-danger {
+  background-color: #dc3545;
+}
+
+.erp-btn-warning {
+  background-color: #ffc107;
+}

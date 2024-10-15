@@ -1,0 +1,115 @@
+[
+    {
+      "product": [
+        {
+          "id": 1,
+          "item": "Product A",
+          "quantity": "2",
+          "mrp": "10",
+          "discount": "5",
+          "sku": "SKU123",
+          "totalPrice": "19"
+        },
+        {
+          "id": 2,
+          "item": "Product B",
+          "quantity": "3",
+          "mrp": "15",
+          "discount": "3",
+          "sku": "SKU456",
+          "totalPrice": "41.85"
+        }
+      ],
+      "BillIinNumber": "Bill6842753",
+      "taxInfo": 7.75,
+      "finalAmount": 60.6,
+      "Taxpercenge": 5
+    },
+    {
+      "product": [
+        {
+          "id": 1,
+          "item": "Product C",
+          "quantity": "1",
+          "mrp": "20",
+          "discount": "2",
+          "sku": "SKU789",
+          "totalPrice": "19.6"
+        }
+      ],
+      "BillIinNumber": "Bill1209437",
+      "taxInfo": 4.9,
+      "finalAmount": 24.5,
+      "Taxpercenge": 10
+    },
+    {
+      "product": [
+        {
+          "id": 1,
+          "item": "Product D",
+          "quantity": "4",
+          "mrp": "8",
+          "discount": "1",
+          "sku": "SKU321",
+          "totalPrice": "31.36"
+        },
+        {
+          "id": 2,
+          "item": "Product E",
+          "quantity": "2",
+          "mrp": "25",
+          "discount": "6",
+          "sku": "SKU654",
+          "totalPrice": "47"
+        }
+      ],
+      "BillIinNumber": "Bill5698372",
+      "taxInfo": 7.155,
+      "finalAmount": 85.515,
+      "Taxpercenge": 9
+    },
+    {
+      "product": [
+        {
+          "id": 1,
+          "item": "Product F",
+          "quantity": "5",
+          "mrp": "30",
+          "discount": "4",
+          "sku": "SKU987",
+          "totalPrice": "143.4"
+        }
+      ],
+      "BillIinNumber": "Bill8234765",
+      "taxInfo": 11.504999999999999,
+      "finalAmount": 154.905,
+      "Taxpercenge": 8
+    },
+    {
+      "product": [
+        {
+          "id": 1,
+          "item": "Product G",
+          "quantity": "3",
+          "mrp": "12",
+          "discount": "2",
+          "sku": "SKU135",
+          "totalPrice": "35.28"
+        },
+        {
+          "id": 2,
+          "item": "Product H",
+          "quantity": "1",
+          "mrp": "18",
+          "discount": "5",
+          "sku": "SKU246",
+          "totalPrice": "17.1"
+        }
+      ],
+      "BillIinNumber": "Bill9372518",
+      "taxInfo": 7.8725,
+      "finalAmount": 60.2525,
+      "Taxpercenge": 13
+    }
+  ]
+  

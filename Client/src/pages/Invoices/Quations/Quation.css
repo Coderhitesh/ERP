@@ -1,0 +1,119 @@
+.Quation-body{
+    width: 100%;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    background-color: white;
+}
+.head-section{
+    display: flex;
+    width: 100%;
+    margin-bottom: 21px;
+    align-items: center;
+    justify-content: space-between;
+}
+.img-logo{
+    width: 20%;
+}
+.fw-boldest{
+    font-size: 3rem;
+    font-weight:700;
+}
+.w-10{
+    width: 80%;
+}
+.company-info{
+    padding: 0.2rem;
+    margin: 0 auto;
+}
+.company-info ul{
+    padding: 0.2rem;
+    list-style-type: none;
+    margin: 0 auto;
+}
+.company-info ul li b{
+    font-weight: 700;
+    margin-right: 5px;
+    color: black;
+}
+.vis{
+    visibility: hidden;
+}
+.Date-info{
+    padding: 0.2rem;
+    margin: 0 auto;
+}
+.Date-info ul{
+    padding: 0.2rem;
+    list-style-type: none;
+    margin: 0 auto;
+}
+.Date-info ul li b{
+    font-weight: 700;
+    margin-right: 5px;
+    color: black;
+}
+.tags-quatation{
+    margin-top: 12px;
+}
+.tags-quatation h2{
+   width: 25%;
+   padding: 0.4rem;
+   font-size: 1.5rem;
+   color: white;
+   background-color: var(--blue);
+   border: 1px solid;
+
+}
+.productTable{
+    margin-top: 21px;
+}
+
+.price-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.any-note{
+    display: flex;
+    flex-direction: column;
+}
+.black{
+    color: black;
+    font-weight: 800;
+    margin-right: 5px;
+}
+.conditions ul li{
+    font-size: 13px!important;
+}
+.signature-box{
+    text-align: right;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+@media print {
+    body * {
+        
+        visibility: hidden;
+    }
+    .Quation-body, .Quation-body * {
+        visibility: visible;
+    }
+    .bg-blue, .blue, .text-black, .black, .white, .fw-bolder {
+        color: inherit !important;
+    }
+   .text-white{
+    color: inherit !important;
+
+   }
+}
+.box{
+    padding: 0.3rem;
+    border: 1px  dashed;
+    width: 100px;
+}
+.box img{
+    width: 100%;
+}

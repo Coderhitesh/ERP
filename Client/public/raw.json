@@ -1,0 +1,173 @@
+[
+    {
+      "ProductName": "Phone",
+      "CategoryName": "4G",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Screen"}
+      ]
+    },
+    {
+      "ProductName": "Laptop",
+      "CategoryName": "High Performance",
+      "RawMaterials": [
+        {"name": "Aluminum"},
+        {"name": "Plastic"},
+        {"name": "Silicon Chips"},
+        {"name": "Battery"},
+        {"name": "Screen"},
+        {"name": "Keyboard"}
+      ]
+    },
+    {
+      "ProductName": "Chair",
+      "CategoryName": "Office Furniture",
+      "RawMaterials": [
+        {"name": "Wood"},
+        {"name": "Metal"},
+        {"name": "Fabric"},
+        {"name": "Foam"}
+      ]
+    },
+    {
+      "ProductName": "Tablet",
+      "CategoryName": "Entertainment",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Screen"}
+      ]
+    },
+    {
+      "ProductName": "Television",
+      "CategoryName": "Smart TV",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Screen"},
+        {"name": "Speakers"}
+      ]
+    },
+    {
+      "ProductName": "Shoes",
+      "CategoryName": "Athletic",
+      "RawMaterials": [
+        {"name": "Rubber"},
+        {"name": "Leather"},
+        {"name": "Foam"},
+        {"name": "Fabric"}
+      ]
+    },
+    {
+      "ProductName": "Bicycle",
+      "CategoryName": "Sport",
+      "RawMaterials": [
+        {"name": "Steel"},
+        {"name": "Aluminum"},
+        {"name": "Rubber"},
+        {"name": "Plastic"}
+      ]
+    },
+    {
+      "ProductName": "Refrigerator",
+      "CategoryName": "Appliance",
+      "RawMaterials": [
+        {"name": "Steel"},
+        {"name": "Plastic"},
+        {"name": "Glass"},
+        {"name": "Insulation"}
+      ]
+    },
+    {
+      "ProductName": "Backpack",
+      "CategoryName": "Travel",
+      "RawMaterials": [
+        {"name": "Fabric"},
+        {"name": "Nylon"},
+        {"name": "Zippers"},
+        {"name": "Buckles"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    },
+    {
+      "ProductName": "Smartwatch",
+      "CategoryName": "Wearable",
+      "RawMaterials": [
+        {"name": "Plastic"},
+        {"name": "Metal"},
+        {"name": "Glass"},
+        {"name": "Circuit Board"},
+        {"name": "Battery"},
+        {"name": "Strap"}
+      ]
+    }
+  ]
+  

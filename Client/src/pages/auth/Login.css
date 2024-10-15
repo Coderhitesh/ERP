@@ -1,0 +1,62 @@
+
+.login{
+    min-height: 100vh;
+    width: 100%;
+    background: var(--bg-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login h2{
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.login h2 span{
+    color: var(--color-blue);
+}
+.login form{
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    background: var(--bg-w);
+}
+.login input{
+    display: block;
+    width: 85%;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    background: var(--bg-body);
+    border-left: 4px solid var(--color-blue);
+}
+.login button[type="submit"]{
+    text-align: center;
+    border: 3px solid transparent;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: var(--color-blue);
+    font-weight: 700;
+    color: white;
+    transition: all ease-in 300ms;
+}
+.login button[type="submit"]:hover{
+    border: 3px solid var(--color-blue);
+    background: white;
+    color: var(--color-blue);
+}
+
+
+
+
+
+
+
