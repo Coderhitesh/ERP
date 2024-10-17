@@ -31,6 +31,8 @@ import AllQuotations from '../pages/Quotations/AllQuotations';
 import PerformaCreate from '../pages/Quotations/PerformaCreate';
 import AllPerforma from '../pages/Quotations/AllPerforma';
 import AllVendors from '../pages/Add-vendor/AllVendors';
+import EditRow from '../pages/Stocks/Raw/EditRow';
+import Semifinished from '../pages/Stocks/SemiFinished/Semifinished';
 const Home = () => {
   return (
     <div className="conatiner">
@@ -76,8 +78,11 @@ const Home = () => {
             {/* <Route path='/sales-order/Manufacturing-Order' element={<ManufactureOrder />} /> */}
             <Route path='/Stock-Manage/Raw' element={<Raw />} />
             <Route path='/Stock-Manage/AddRaw' element={<AddRaw />} />
+            <Route path='/Stock-Manage/edit-raw/:id' element={<EditRow />} />
             <Route path='/Stock-Manage/Order-Raw' element={<OrderRaw />} />
             <Route path='/Stock-Manage/Make-Raw-Order' element={<OrderForm />} />
+
+            <Route path='/Stock-Manage/Semi-Finshied' element={<Semifinished />} />
 
             {/* ---------------------Bills And Challan ---------------------- */}
             <Route path='/Bills/Create-Bills' element={<CreateBills />} />

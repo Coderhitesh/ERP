@@ -1,28 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './add-row.css'
 import { useSnackbar } from 'notistack'
 import { Button } from '@mui/material';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 const AddRaw = () => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar()
+    const [allSupplier, setAllSupplier] = useState([])
 
     const [raw, setRaw] = useState({
-        ProductName: "",
-        CategoryName: "",
-        RawMaterials: [
-            { name: "" }
-        ]
+        materialName: "",
+        quantity: "",
+        unitPrice: "",
+        supplier: "",
+        unitOfMeasurement: "",
+        storageLocation: ""
     });
 
-    const handleChange = (e, index) => {
+    const fetchSupplier = async () => {
+        try {
+            const res = await axios.get('http://localhost:7000/api/v1/get-all-supplier')
+            // console.log(res.data.data)
+            setAllSupplier(res.data.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchSupplier();
+    }, [])
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setRaw(prevState => {
-            const updatedMaterials = prevState.RawMaterials.map((material, i) => {
-                if (i === index) {
-                    return { ...material, [name]: value };
-                }
-                return material;
-            });
-            return { ...prevState, RawMaterials: updatedMaterials };
+            return { ...prevState, [name]: value }
         });
     };
 
@@ -39,48 +51,30 @@ const AddRaw = () => {
             RawMaterials: prevState.RawMaterials.filter((material, i) => i !== index)
         }));
         const key = enqueueSnackbar('Success Full Removed', {
-            variant: 'success', // Customize the appearance of the snackbar
-            persist: true, // Allow the snackbar to persist until dismissed
-           
+            variant: 'success',
+            persist: true,
+
         });
         setTimeout(() => {
             closeSnackbar(key);
-        }, 2500); 
+        }, 2500);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!raw.CategoryName || !raw.ProductName  || !raw.RawMaterials) {
-            const key = enqueueSnackbar('Please fill in all fields', {
-                variant: 'error', // Customize the appearance of the snackbar
-                persist: true, // Allow the snackbar to persist until dismissed
-                action: (key) => ( // Provide a close button
-                    <button className='bg- btnsclose ' onClick={() => closeSnackbar(key)}>Dismiss</button>
-                )
-            });
-            setTimeout(() => {
-                closeSnackbar(key);
-            }, 2500); 
-        }else{
-            console.log(raw)
-            setRaw({
-                ProductName: "",
-                CategoryName: "",
-                RawMaterials: [
-                    { name: "" }
-                ]
+        try {
+            const res = await axios.post('http://localhost:7000/api/v1/create-raw-material', raw, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             })
-            const key = enqueueSnackbar('Raw is AddedSuccessfull', {
-                variant: 'success', // Customize the appearance of the snackbar
-                persist: true, // Allow the snackbar to persist until dismissed
-               
-            });
-            setTimeout(() => {
-                closeSnackbar(key);
-            }, 2500); 
+            toast.success('Raw Material Added Successfully')
+        } catch (error) {
+            console.log(error)
+            toast.error('Error in creating Raw Material')
         }
     };
-    
+
 
 
     return (
@@ -97,41 +91,45 @@ const AddRaw = () => {
                             </div>
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
-                                    <div className="mb-3">
-                                        <label htmlFor="ProductName" className="form-label">Product Name</label>
-                                        <input type="text" className="form-control" id="ProductName" name="ProductName" value={raw.ProductName} onChange={(e) => setRaw({ ...raw, ProductName: e.target.value })} />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="CategoryName" className="form-label">Category Name</label>
-                                        <input type="text" className="form-control" id="CategoryName" name="CategoryName" value={raw.CategoryName} onChange={(e) => setRaw({ ...raw, CategoryName: e.target.value })} />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Raw Materials</label>
-                                        {raw.RawMaterials.map((material, index) => (
-                                            <div key={index} className="row mb-2">
-                                                <div className="col">
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        placeholder="Name"
-                                                        value={material.name}
-                                                        name='name'
-                                                        onChange={(e) => handleChange(e, index)}
-                                                    />
-                                                </div>
-                                                <div className="col-auto">
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-danger"
-                                                        onClick={() => handleRemoveMaterials(index)}
-                                                    >
-                                                        Remove
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ))}
+                                    <div className="row">
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="materialName" className="form-label">Material Name</label>
+                                            <input type="text" className="form-control" id="materialName" name="materialName" value={raw.materialName} onChange={handleChange} />
+                                        </div>
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="quantity" className="form-label">Quantity</label>
+                                            <input type="text" className="form-control" id="quantity" name="quantity" value={raw.quantity} onChange={handleChange} />
+                                        </div>
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="unitPrice" className="form-label">Unit Price</label>
+                                            <input type="text" className="form-control" id="unitPrice" name="unitPrice" value={raw.unitPrice} onChange={handleChange} />
+                                        </div>
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="unitOfMeasurement" className="form-label">Measurement of Unit</label>
+                                            <input type="text" className="form-control" id="unitOfMeasurement" name="unitOfMeasurement" value={raw.unitOfMeasurement} onChange={handleChange} />
+                                        </div>
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="storageLocation" className="form-label">Storage Location</label>
+                                            <input type="text" className="form-control" id="storageLocation" name="storageLocation" value={raw.storageLocation} onChange={handleChange} />
+                                        </div>
+                                        <div className="col-6 mb-3">
+                                            <label htmlFor="supplier" className="form-label">Supplier</label>
+                                            <select
+                                                name="supplier"
+                                                id="supplier"
+                                                className="form-select"
+                                                value={raw.supplier}
+                                                onChange={handleChange} // Add onChange to handle state update
+                                            >
+                                                <option value="">Select Supplier</option>
+                                                {
+                                                    allSupplier && allSupplier.map((item, index) => (
+                                                        <option key={index} value={item._id}>{item.supplierName}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
 
-                                        <button type="button" className="btn btn-primary" onClick={handleAddRawMaterials}>Add Raw Material</button>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>

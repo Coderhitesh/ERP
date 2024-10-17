@@ -47,7 +47,7 @@ exports.createSemiFinished = async (req, res) => {
 
 exports.getSemiFinished = async (req, res) => {
     try {
-        const allSemiFinished = await SemiFinished.find().populate(rawMaterials);
+        const allSemiFinished = await SemiFinished.find();
         if (!allSemiFinished) {
             return res.status(404).json({
                 success: false,

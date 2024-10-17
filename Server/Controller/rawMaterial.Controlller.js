@@ -11,7 +11,7 @@ exports.createRawMaterial = async (req, res) => {
         if (!unitPrice) emptyField.push('unitPrice');
         if (!supplier) emptyField.push('supplier');
         if (!unitOfMeasurement) emptyField.push('unitOfMeasurement');
-        if (!Roles) emptyField.push('Roles');
+        // if (!Roles) emptyField.push('Roles');
         
         // Check if there are any missing required fields
         if (emptyField.length > 0) {
@@ -53,7 +53,7 @@ exports.createRawMaterial = async (req, res) => {
 
 exports.getRawMaterial = async (req, res) => {
     try {
-        const allRawMaterial = await RawMaterial.find().populate(supplier);
+        const allRawMaterial = await RawMaterial.find();
         if (!allRawMaterial) {
             return res.status(404).json({
                 success: false,
@@ -78,7 +78,7 @@ exports.getRawMaterial = async (req, res) => {
 exports.getSingleRawMaterial = async (req, res) => {
     try {
         const id = req.params._id;
-        const singleRawMaterial = await RawMaterial.findById(id).populate(supplier);
+        const singleRawMaterial = await RawMaterial.findById(id);
         if (!singleRawMaterial) {
             return res.status(404).json({
                 success: false,

@@ -25,11 +25,11 @@ exports.createSupplier = async (req, res) => {
         if (!panNumber) emptyField.push('panNumber');
         if (!address) emptyField.push('address');
         if (!paymentTerms) emptyField.push('paymentTerms');
-        if (!Roles) emptyField.push('Roles');
+        // if (!Roles) emptyField.push('Roles');
         if (emptyField.length > 0) {
             return res.status(400).json({
                 success: false,
-                message: `Please provide the following fields: ${empty.join(", ")}`
+                message: `Please provide the following fields: ${emptyField.join(", ")}`
             })
         }
 

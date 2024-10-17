@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Raw = () => {
     const [raws, setRaws] = useState([]);
@@ -9,8 +11,8 @@ const Raw = () => {
 
     const handleFetchRaws = async () => {
         try {
-            const response = await axios.get('/raw.json');
-            setRaws(response.data);
+            const response = await axios.get('http://localhost:7000/api/v1/get-all-raw-material');
+            setRaws(response.data.data);
         } catch (error) {
             console.log(error);
         }
@@ -19,6 +21,18 @@ const Raw = () => {
     useEffect(() => {
         handleFetchRaws();
     }, []);
+
+    const handleDelete = async (id) => {
+        // console.log('id',id)
+        try {
+            const res = await axios.delete(`http://localhost:7000/api/v1/delete-raw-material/${id}`)
+            toast.success('Raw Material Deleted Successfully!')
+            await handleFetchRaws();
+        } catch (error) {
+            console.log(error)
+            toast.error('Internal server error in deleting Raw Material')
+        }
+    }
 
     // Pagination
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -30,7 +44,7 @@ const Raw = () => {
 
     // Search
     const filteredProducts = raws.filter(raw => {
-        return raw.ProductName.toLowerCase().includes(searchTerm.toLowerCase());
+        return raw.materialName.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     return (
@@ -57,9 +71,12 @@ const Raw = () => {
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Product Name</th>
-                                <th>Category Name</th>
-                                <th>Raw Materials</th>
+                                <th>Raw Material Name</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Supplier</th>
+                                <th>Measurement Of Unit</th>
+                                <th>Storage Location</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,20 +84,24 @@ const Raw = () => {
                             {(!searchTerm ? currentProducts : filteredProducts).map((raw, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{raw.ProductName}</td>
-                                    <td>{raw.CategoryName}</td>
-                                    <td>
+                                    <td>{raw.materialName}</td>
+                                    <td>{raw.quantity}</td>
+                                    <td>{raw.unitPrice}</td>
+                                    <td>{raw.supplier}</td>
+                                    <td>{raw.unitOfMeasurement}</td>
+                                    <td>{raw.storageLocation}</td>
+                                    {/* <td>
                                         {raw.RawMaterials.map((material, idx) => (
                                             <React.Fragment key={idx}>
                                                 <span>{material.name}</span>
                                                 {idx !== raw.RawMaterials.length - 1 && <b className='black'>, </b>}
                                             </React.Fragment>
                                         ))}
-                                    </td>
+                                    </td> */}
                                     <td className='d-flex gap-2'>
-                                        <button className='btn btn-primary'>Edit</button>
-                                        <button className='btn btn-danger'>Delete</button>
-                                    </td>
+                                        <Link to={`/Stock-Manage/edit-raw/${raw._id}`} className='btn btn-primary'>Edit</Link>
+                                        <button className='btn btn-danger' onClick={() => handleDelete(raw._id)}>Delete</button>
+                                        </td>
                                 </tr>
                             ))}
 
