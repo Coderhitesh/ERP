@@ -5,56 +5,57 @@ import toast from 'react-hot-toast';
 import { Modal, Button } from 'react-bootstrap';
 
 function Semifinished() {
-    const [raws, setRaws] = useState([]);
+    const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(7);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleFetchRaws = async () => {
+    const handleFetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:7000/api/v1/get-all-raw-material');
-            setRaws(response.data.data);
+            const response = await axios.get('http://localhost:7000/api/v1/get-all-semifinished');
+            setProducts(response.data.data);
         } catch (error) {
             console.log(error);
         }
     };
 
     useEffect(() => {
-        handleFetchRaws();
+        handleFetchProducts();
     }, []);
 
     const handleDelete = async (id) => {
-        // console.log('id',id)
         try {
-            const res = await axios.delete(`http://localhost:7000/api/v1/delete-raw-material/${id}`)
-            toast.success('Raw Material Deleted Successfully!')
-            await handleFetchRaws();
+            const res = await axios.delete(`http://localhost:7000/api/v1/delete-semifinished/${id}`);
+            toast.success('Product Deleted Successfully!');
+            await handleFetchProducts();
         } catch (error) {
-            console.log(error)
-            toast.error('Internal server error in deleting Raw Material')
+            console.log(error);
+            toast.error('Internal server error in deleting Product');
         }
-    }
+    };
 
     // Pagination
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = raws.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     // Search
-    const filteredProducts = raws.filter(raw => {
-        return raw.materialName.toLowerCase().includes(searchTerm.toLowerCase());
+    const filteredProducts = products.filter(product => {
+        return product.productName.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     return (
         <div className='container-fluid'>
             <div className='col-12'>
-            <h2 className="d-flex justify-content-between align-items-center">
-                All Vendors
-                <a href="/Clients-Vendor/Add-Vendors"><Button variant="success">Create Vendor</Button></a>
-            </h2>
+                <h2 className="d-flex justify-content-between align-items-center">
+                    All Products
+                    <Link to="/Stock-Manage/create-semi-finished">
+                        <Button variant="success">Create Semi Finished</Button>
+                    </Link>
+                </h2>
                 <div className='card-body bg-white'>
                     <div className="input-group mb-3">
                         <input
@@ -73,45 +74,37 @@ function Semifinished() {
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Raw Material Name</th>
+                                <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
-                                <th>Supplier</th>
-                                <th>Measurement Of Unit</th>
-                                <th>Storage Location</th>
+                                <th>Raw Materials</th>
+                                <th>Production Date</th>
+                                <th>Expiration Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {(!searchTerm ? currentProducts : filteredProducts).map((raw, index) => (
+                            {(!searchTerm ? currentProducts : filteredProducts).map((product, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{raw.materialName}</td>
-                                    <td>{raw.quantity}</td>
-                                    <td>{raw.unitPrice}</td>
-                                    <td>{raw.supplier}</td>
-                                    <td>{raw.unitOfMeasurement}</td>
-                                    <td>{raw.storageLocation}</td>
-                                    {/* <td>
-                                        {raw.RawMaterials.map((material, idx) => (
-                                            <React.Fragment key={idx}>
-                                                <span>{material.name}</span>
-                                                {idx !== raw.RawMaterials.length - 1 && <b className='black'>, </b>}
-                                            </React.Fragment>
-                                        ))}
-                                    </td> */}
+                                    <td>{product.productName}</td>
+                                    <td>{product.quantity}</td>
+                                    <td>{product.unitPrice}</td>
+                                    <td>{product.rawMaterials.join(', ')}</td> {/* Display raw materials as comma-separated values */}
+                                    <td>{new Date(product.productionDate).toLocaleDateString()}</td>
+                                    <td>{new Date(product.expirationDate).toLocaleDateString()}</td>
                                     <td className='d-flex gap-2'>
-                                        <Link to={`/Stock-Manage/edit-raw/${raw._id}`} className='btn btn-primary'>Edit</Link>
-                                        <button className='btn btn-danger' onClick={() => handleDelete(raw._id)}>Delete</button>
-                                        </td>
+                                        <Link to={`/Stock-Manage/edit-semi-finished/${product._id}`} className='btn btn-primary'>Edit</Link>
+                                        <button className='btn btn-danger' onClick={() => handleDelete(product._id)}>Delete</button>
+                                    </td>
                                 </tr>
                             ))}
-
                         </tbody>
                     </table>
+
                     {/* Pagination */}
                     <ul className='pagination justify-content-center'>
-                        {Array.from({ length: Math.ceil(raws.length / productsPerPage) }).map((_, index) => (
+                        {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
                             <li key={index} className={`page-item ${index + 1 === currentPage ? 'active' : ''}`}>
                                 <button onClick={() => paginate(index + 1)} className='page-link'>
                                     {index + 1}
@@ -125,4 +118,4 @@ function Semifinished() {
     );
 };
 
-export default Semifinished
+export default Semifinished;

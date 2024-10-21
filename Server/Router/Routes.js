@@ -11,6 +11,7 @@ const { createManufactureOrder, getAllManufactureOrders, getSingleManufactureOrd
 const { createPerformaInvoice, getAllPerformaInvoices, getSinglePerformaInvoice, deletePerformaInvoice, updatePerformaInvoice } = require('../Controller/performaInvoice.Controller')
 const { createPurchaseOrder, getAllPurchaseOrders, getSinglePurchaseOrder, deletePurchaseOrder, updatePurchaseOrder } = require('../Controller/purchase.Controller')
 const { createQuotation, getAllQuotations, getSingleQuotation, deleteQuotation, updateQuotation } = require('../Controller/quatation.Controller')
+const { createFinishedGood, getAllFinishedGoods, getSingleFinishedGood, updateFinishedGood, deleteFinishedGood } = require('../Controller/finishedGoodes.Controller')
 const Router = express.Router()
 
 // semi finished router here 
@@ -108,5 +109,12 @@ Router.get('/get-all-quatation',getAllQuotations)
 Router.get('/get-single-quatation/:_id',getSingleQuotation)
 Router.delete('/delete-quatation/:_id',deleteQuotation)
 Router.put('/update-quatation/:_id',updateQuotation)
+
+// finished router here 
+Router.post('/create-finished',createFinishedGood)
+Router.get('/get-all-finished',getAllFinishedGoods)
+Router.get('/get-single-finished/:_id',getSingleFinishedGood)
+Router.put('/update-finished/:_id',updateFinishedGood)
+Router.delete('/delete-finished/:_id',deleteFinishedGood)
 
 module.exports = Router

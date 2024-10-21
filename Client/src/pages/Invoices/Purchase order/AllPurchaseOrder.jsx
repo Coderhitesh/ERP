@@ -1,120 +1,27 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const AllPurchaseOrder = () => {
-
-    const AllOrders = [
-        {
-            id: "01",
-            vendorName: "Digi India Solutions",
-            orderId: "ORGF001",
-            issuedDate: "15-05-2024",
-            totalQuantity: 450,
-            totalPrice: "55,000"
-        },
-        {
-            id: "02",
-            vendorName: "Tech World",
-            orderId: "ORGF002",
-            issuedDate: "16-05-2024",
-            totalQuantity: 300,
-            totalPrice: "35,000"
-        },
-        {
-            id: "03",
-            vendorName: "Electro Hub",
-            orderId: "ORGF003",
-            issuedDate: "17-05-2024",
-            totalQuantity: 500,
-            totalPrice: "60,000"
-        },
-        {
-            id: "04",
-            vendorName: "Smart Solutions",
-            orderId: "ORGF004",
-            issuedDate: "18-05-2024",
-            totalQuantity: 600,
-            totalPrice: "75,000"
-        },
-        {
-            id: "05",
-            vendorName: "Innovative Tech",
-            orderId: "ORGF005",
-            issuedDate: "19-05-2024",
-            totalQuantity: 350,
-            totalPrice: "40,000"
-        },
-        {
-            id: "06",
-            vendorName: "Tech Innovators",
-            orderId: "ORGF006",
-            issuedDate: "20-05-2024",
-            totalQuantity: 400,
-            totalPrice: "50,000"
-        },
-        {
-            id: "07",
-            vendorName: "Future Tech",
-            orderId: "ORGF007",
-            issuedDate: "21-05-2024",
-            totalQuantity: 450,
-            totalPrice: "55,000"
-        },
-        {
-            id: "08",
-            vendorName: "Digital Era",
-            orderId: "ORGF008",
-            issuedDate: "22-05-2024",
-            totalQuantity: 320,
-            totalPrice: "38,000"
-        },
-        {
-            id: "09",
-            vendorName: "Smart Systems",
-            orderId: "ORGF009",
-            issuedDate: "23-05-2024",
-            totalQuantity: 470,
-            totalPrice: "57,000"
-        },
-        {
-            id: "10",
-            vendorName: "Tech Giants",
-            orderId: "ORGF010",
-            issuedDate: "24-05-2024",
-            totalQuantity: 520,
-            totalPrice: "65,000"
-        },
-        {
-            id: "11",
-            vendorName: "Digital Solutions",
-            orderId: "ORGF011",
-            issuedDate: "25-05-2024",
-            totalQuantity: 530,
-            totalPrice: "68,000"
-        },
-        {
-            id: "12",
-            vendorName: "Electro Innovations",
-            orderId: "ORGF012",
-            issuedDate: "26-05-2024",
-            totalQuantity: 480,
-            totalPrice: "62,000"
-        },
-        {
-            id: "13",
-            vendorName: "Tech Giants",
-            orderId: "ORGF013",
-            issuedDate: "24-05-2024",
-            totalQuantity: 520,
-            totalPrice: "65,000"
-        },
-    ];
-
+    const [allOrders, setAllOrders] = useState([]);
     const [vendorFilter, setVendorFilter] = useState("");
 
+    // Fetch purchase orders from backend
+    useEffect(() => {
+        const fetchPurchaseOrders = async () => {
+            try {
+                const response = await axios.get('http://localhost:7000/api/v1/get-all-purchase');
+                setAllOrders(response.data.data); // Assume API sends an array of orders
+            } catch (error) {
+                console.error("Error fetching purchase orders", error);
+            }
+        };
+        fetchPurchaseOrders();
+    }, []);
+
     // Function to filter orders based on selected filters
-    const filteredOrders = AllOrders.filter(order => {
-        if (vendorFilter && order.vendorName !== vendorFilter) {
+    const filteredOrders = allOrders.filter(order => {
+        if (vendorFilter && order.supplierId.supplierName !== vendorFilter) {
             return false;
         }
         return true;
@@ -123,7 +30,7 @@ const AllPurchaseOrder = () => {
     return (
         <>
             <div className="flex-head">
-                <h2>Purchase Orders </h2>
+                <h2>Purchase Orders</h2>
                 <Link to="/order/create-purchase-order">Create Purchase Order</Link>
             </div>
 
@@ -131,15 +38,19 @@ const AllPurchaseOrder = () => {
                 <div className="container-fluid py-3">
                     <div className="row">
                         <div className="col-md-4">
-                            <select className="form-select" value={vendorFilter} onChange={(e) => setVendorFilter(e.target.value)}>
+                            <select
+                                className="form-select"
+                                value={vendorFilter}
+                                onChange={(e) => setVendorFilter(e.target.value)}
+                            >
                                 <option value="">Choose Vendor Name</option>
-                                {AllOrders.map((order, index) => (
-                                    <option key={index}>{order.vendorName}</option>
+                                {allOrders.map((order, index) => (
+                                    <option key={index} value={order.supplierId?.supplierName}>
+                                        {order.supplierId?.supplierName}
+                                    </option>
                                 ))}
                             </select>
-
                         </div>
-                        
                     </div>
                 </div>
             </section>
@@ -153,26 +64,42 @@ const AllPurchaseOrder = () => {
                                     <tr>
                                         <th scope="col">S.No</th>
                                         <th scope="col">Vendor Name</th>
-                                        <th scope="col">Order Id</th>
+                                        <th scope="col">Order Number</th>
                                         <th scope="col">Issued Date</th>
                                         <th scope="col">Total Quantity</th>
-                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Total Amount</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {filteredOrders.map((order, index) => (
-                                        <tr key={index}>
-                                            <td>{order.id}</td>
-                                            <td>{order.vendorName}</td>
-                                            <td>{order.orderId}</td>
-                                            <td>{order.issuedDate}</td>
-                                            <td>{order.totalQuantity}</td>
-                                            <td>{order.totalPrice}</td>
+                                        <tr key={order._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{order.supplierId?.supplierName}</td>
+                                            <td>{order.orderNumber}</td>
+                                            <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                                            <td>
+                                                {order.items.reduce((acc, item) => acc + item.quantity, 0)}
+                                            </td>
+                                            <td>{order.totalAmount.toLocaleString()}</td>
+                                            <td>{order.status}</td>
                                             <td className="action-btns">
-                                                <button className="view"><i className="fa-regular fa-eye"></i></button>
-                                                <button className="update"><i className="fa-solid fa-pen-to-square"></i></button>
-                                                <button className="delete"><i className="fa-solid fa-trash-can-arrow-up"></i></button>
+                                               <a style={{background:"none"}} href="">
+                                               <button className="view">
+                                                    <i className="fa-regular fa-eye"></i>
+                                                </button>
+                                               </a>
+                                               <Link to={`/order/edit-purchase-order/${order._id}`} style={{background:"none"}}>
+                                                <button className="update">
+                                                    <i className="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                               </Link>
+                                               <a style={{background:"none"}} href="">
+                                                <button className="delete">
+                                                    <i className="fa-solid fa-trash-can-arrow-up"></i>
+                                                </button>
+                                               </a>
                                             </td>
                                         </tr>
                                     ))}
@@ -183,8 +110,7 @@ const AllPurchaseOrder = () => {
                 </div>
             </section>
         </>
+    );
+};
 
-    )
-}
-
-export default AllPurchaseOrder
+export default AllPurchaseOrder;

@@ -1,43 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Headings from '../../../components/Headings/Headings';
-import toast from 'react-hot-toast';
+import { useParams, useNavigate } from 'react-router-dom';
+// import Headings from '../../../components/Headings/Headings';
 import Select from 'react-select';
+import toast from 'react-hot-toast';
+import Headings from '../../components/Headings/Headings';
 
-function AddSemiFinished() {
+function EditFinished() {
+    const { id } = useParams(); // Get the finished good ID from the route params
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         productName: '',
         quantity: '',
         unitPrice: '',
-        rawMaterials: [], // For multiple raw materials selection
+        semiFinishedGoods: [], // Multiple selection for semi-finished goods
         productionDate: '',
-        expirationDate: '',
-        roles: [] // For roles input
+        expirationDate: ''
     });
 
-    const [rawMaterialsOptions, setRawMaterialsOptions] = useState([]); // Options for Select
+    const [semiFinishedGoodsOptions, setSemiFinishedGoodsOptions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    // Fetch raw materials for dropdown
-    const fetchRawMaterials = async () => {
+    // Fetch semi-finished goods for dropdown
+    const fetchSemiFinishedGoods = async () => {
         try {
-            const response = await axios.get('http://localhost:7000/api/v1/get-all-raw-material');
-            const options = response.data.data.map(rawMaterial => ({
-                value: rawMaterial._id,
-                label: rawMaterial.materialName
+            const response = await axios.get('http://localhost:7000/api/v1/get-all-semifinished');
+            const options = response.data.data.map(semiFinished => ({
+                value: semiFinished._id,
+                label: semiFinished.productName,
             }));
-            setRawMaterialsOptions(options);
+            setSemiFinishedGoodsOptions(options);
         } catch (error) {
-            console.error('Error fetching raw materials:', error);
+            console.error('Error fetching semi-finished goods:', error);
+        }
+    };
+
+    // Fetch finished good data for editing
+    const fetchFinishedGood = async () => {
+        try {
+            const response = await axios.get(`http://localhost:7000/api/v1/get-single-finished/${id}`);
+            const finishedGood = response.data.data;
+            setFormData({
+                productName: finishedGood.productName,
+                quantity: finishedGood.quantity,
+                unitPrice: finishedGood.unitPrice,
+                semiFinishedGoods: finishedGood.semiFinishedGoods.map(sfg => sfg._id), // Pre-select semi-finished goods
+                productionDate: finishedGood.productionDate.split('T')[0], // Convert date format
+                expirationDate: finishedGood.expirationDate ? finishedGood.expirationDate.split('T')[0] : ''
+            });
+        } catch (error) {
+            setError('Error fetching finished good data');
+            console.error('Error fetching finished good data:', error);
         }
     };
 
     useEffect(() => {
-        fetchRawMaterials();
-    }, []);
+        fetchSemiFinishedGoods();
+        fetchFinishedGood();
+    }, [id]);
 
-    // Handle form input changes
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -45,12 +67,11 @@ function AddSemiFinished() {
         });
     };
 
-    // Handle select change for raw materials (multiple select)
-    const handleRawMaterialsChange = (selectedOptions) => {
-        const selectedRawMaterials = selectedOptions.map(option => option.value);
+    const handleSelectChange = (selectedOptions) => {
+        const selectedIds = selectedOptions.map(option => option.value);
         setFormData({
             ...formData,
-            rawMaterials: selectedRawMaterials
+            semiFinishedGoods: selectedIds,
         });
     };
 
@@ -59,21 +80,13 @@ function AddSemiFinished() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:7000/api/v1/create-semifinished', formData);
-            toast.success('Semi-Finished Product created successfully!');
-            setFormData({
-                productName: '',
-                quantity: '',
-                unitPrice: '',
-                rawMaterials: [],
-                productionDate: '',
-                expirationDate: '',
-                roles: []
-            });
+            const response = await axios.put(`http://localhost:7000/api/v1/update-finished/${id}`, formData);
+            toast.success('Finished Product updated successfully!');
+            //   navigate('/finished-products'); // Navigate to a list of finished products after successful update
         } catch (error) {
-            setError('Error creating semi-finished product');
+            setError('Error updating finished product');
             console.log(error)
-            toast.error('Error creating semi-finished product',error);
+            toast.error('Error updating finished product');
         }
 
         setLoading(false);
@@ -81,7 +94,7 @@ function AddSemiFinished() {
 
     return (
         <>
-            <Headings heading={'Add Semi-Finished Product'} />
+            <Headings heading={'Edit Finished Product'} />
             <div className="container px-4 py-3 mt-4">
                 <div className='col-12 col-md-12'>
                     <div className="row">
@@ -89,6 +102,15 @@ function AddSemiFinished() {
                             <form className='text-capitalize' onSubmit={handleSubmit}>
 
                                 {/* Product Name */}
+                                {/* <div className='container'>
+                                    <div className='col-12'>
+                                        <div className="row">
+                                            
+                                        </div>
+                                    </div>
+                                </div> */}
+
+                                {/* Quantity and Unit Price */}
                                 <div className='container'>
                                     <div className='col-12'>
                                         <div className="row">
@@ -104,14 +126,6 @@ function AddSemiFinished() {
                                                     required
                                                 />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Quantity and Unit Price */}
-                                <div className='container'>
-                                    <div className='col-12'>
-                                        <div className="row">
                                             <div className="col-6 mb-3">
                                                 <label htmlFor="quantity" className="form-label">Quantity</label>
                                                 <input
@@ -137,34 +151,6 @@ function AddSemiFinished() {
                                                     required
                                                 />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Raw Material Dropdown (Multiple Select) */}
-                                <div className='container'>
-                                    <div className='col-12'>
-                                        <div className="row">
-                                            <div className="col-12 mb-3">
-                                                <label htmlFor="rawMaterials" className="form-label">Select Raw Materials</label>
-                                                <Select
-                                                    isMulti
-                                                    name="rawMaterials"
-                                                    options={rawMaterialsOptions}
-                                                    className="basic-multi-select"
-                                                    classNamePrefix="select"
-                                                    onChange={handleRawMaterialsChange}
-                                                    value={rawMaterialsOptions.filter(option => formData.rawMaterials.includes(option.value))}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Production Date and Expiration Date */}
-                                <div className='container'>
-                                    <div className='col-12'>
-                                        <div className="row">
                                             <div className="col-6 mb-3">
                                                 <label htmlFor="productionDate" className="form-label">Production Date</label>
                                                 <input
@@ -186,27 +172,20 @@ function AddSemiFinished() {
                                                     name="expirationDate"
                                                     value={formData.expirationDate}
                                                     onChange={handleChange}
-                                                    required
                                                 />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Roles (Optional Input) */}
-                                <div className='container'>
-                                    <div className='col-12'>
-                                        <div className="row">
-                                            <div className="col-12 mb-3">
-                                                <label htmlFor="roles" className="form-label">Roles</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    id="roles"
-                                                    name="roles"
-                                                    value={formData.roles}
-                                                    onChange={handleChange}
-                                                    placeholder="Enter roles separated by commas"
+                                            
+                                            <div className="col-6 mb-3">
+                                                <label htmlFor="semiFinishedGoods" className="form-label">Select Semi-Finished Goods</label>
+                                                <Select
+                                                    isMulti
+                                                    options={semiFinishedGoodsOptions}
+                                                    value={semiFinishedGoodsOptions.filter(option =>
+                                                        formData.semiFinishedGoods.includes(option.value)
+                                                    )}
+                                                    onChange={handleSelectChange}
+                                                    placeholder="Select Semi-Finished Goods"
+                                                    id="semiFinishedGoods"
                                                 />
                                             </div>
                                         </div>
@@ -216,7 +195,7 @@ function AddSemiFinished() {
                                 {/* Submit Button */}
                                 <div className='ml-5'>
                                     <button type="submit" className="px-5 py-2 bg-yellow text-white fw-bolder" disabled={loading}>
-                                        {loading ? 'Submitting...' : 'Add Semi-Finished Product'}
+                                        {loading ? 'Updating...' : 'Update Finished Product'}
                                     </button>
                                 </div>
 
@@ -230,4 +209,4 @@ function AddSemiFinished() {
     );
 }
 
-export default AddSemiFinished;
+export default EditFinished;

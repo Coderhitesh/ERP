@@ -153,7 +153,7 @@ const Header = () => {
           <div className="bg-white py-2 collapse-inner rounded">
             <h6 className="collapse-header"><i className="fa-solid fa-plus mr-2"></i>Add Stock:</h6>
             <Link to={'/Stock-Manage/Raw'} className="collapse-item">All-Raw</Link>
-            <Link to={'/Stock-Manage/AddRaw'} className="collapse-item">Add Raw Products</Link>
+            {/* <Link to={'/Stock-Manage/AddRaw'} className="collapse-item">Add Raw Products</Link> */}
             <Link to={'/Stock-Manage/Order-Raw'} className="collapse-item">Order-Raw</Link>
 
 
@@ -212,7 +212,7 @@ const Header = () => {
         <div id="collapsePages" className={`collapse ${Accounts ? '' : 'd-none'}`} aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div className="bg-white  collapse-inner rounded">
 
-            <Link to={'/Accounts/All-Ledger'}  className="collapse-item"><i class="fa-solid fa-check mr-2"></i>All Ledger</Link>
+            <Link to={'/Accounts/All-Ledger'} className="collapse-item"><i class="fa-solid fa-check mr-2"></i>All Ledger</Link>
             <Link to={'/Make-a-Bills'} className="collapse-item"><i class="fa-solid fa-receipt mr-2"></i>Make a Bills </Link>
 
             {/* <div className={`collapse py-0 ${InAccounts ? '' : 'd-none'}`} aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

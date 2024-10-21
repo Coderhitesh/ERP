@@ -26,7 +26,7 @@ const PurchaseOrderSchema = new Schema({
 
   paymentTerms: { type: String, required: true } 
 },{timestamps:true});
-module.exports = mongoose.model('PurchaseOrder', PurchaseOrderSchema);  
+// module.exports = mongoose.model('PurchaseOrder', PurchaseOrderSchema);  
 // Create the Purchase Order model
 const PurchaseOrder = mongoose.model('PurchaseOrder', PurchaseOrderSchema);
 

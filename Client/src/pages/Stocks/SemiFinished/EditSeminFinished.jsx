@@ -3,8 +3,12 @@ import axios from 'axios';
 import Headings from '../../../components/Headings/Headings';
 import toast from 'react-hot-toast';
 import Select from 'react-select';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function AddSemiFinished() {
+function EditSeminFinished() {
+    const { id } = useParams(); // Assuming you're using react-router-dom to get the product ID
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         productName: '',
         quantity: '',
@@ -33,9 +37,31 @@ function AddSemiFinished() {
         }
     };
 
+    // Fetch the semi-finished product details by ID
+    const fetchSemiFinishedProduct = async () => {
+        try {
+            const response = await axios.get(`http://localhost:7000/api/v1/get-single-semifinished/${id}`);
+            const product = response.data.data;
+
+            // Prepopulate the form data with the fetched product
+            setFormData({
+                productName: product.productName,
+                quantity: product.quantity,
+                unitPrice: product.unitPrice,
+                rawMaterials: product.rawMaterials.map(material => material._id), // Use _id of raw materials
+                productionDate: product.productionDate.split('T')[0], // format the date correctly
+                expirationDate: product.expirationDate ? product.expirationDate.split('T')[0] : '',
+                roles: product.roles || []
+            });
+        } catch (error) {
+            console.error('Error fetching semi-finished product:', error);
+        }
+    };
+
     useEffect(() => {
         fetchRawMaterials();
-    }, []);
+        fetchSemiFinishedProduct(); // Load the product data when the component mounts
+    }, [id]);
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -59,21 +85,13 @@ function AddSemiFinished() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:7000/api/v1/create-semifinished', formData);
-            toast.success('Semi-Finished Product created successfully!');
-            setFormData({
-                productName: '',
-                quantity: '',
-                unitPrice: '',
-                rawMaterials: [],
-                productionDate: '',
-                expirationDate: '',
-                roles: []
-            });
+            const response = await axios.put(`http://localhost:7000/api/v1/update-semifinished/${id}`, formData);
+            toast.success('Semi-Finished Product updated successfully!');
+            // navigate('/semi-finished-products'); // Redirect to another page after successful update
         } catch (error) {
-            setError('Error creating semi-finished product');
             console.log(error)
-            toast.error('Error creating semi-finished product',error);
+            setError('Error updating semi-finished product');
+            toast.error('Error updating semi-finished product');
         }
 
         setLoading(false);
@@ -81,7 +99,7 @@ function AddSemiFinished() {
 
     return (
         <>
-            <Headings heading={'Add Semi-Finished Product'} />
+            <Headings heading={'Edit Semi-Finished Product'} />
             <div className="container px-4 py-3 mt-4">
                 <div className='col-12 col-md-12'>
                     <div className="row">
@@ -186,7 +204,6 @@ function AddSemiFinished() {
                                                     name="expirationDate"
                                                     value={formData.expirationDate}
                                                     onChange={handleChange}
-                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -216,7 +233,7 @@ function AddSemiFinished() {
                                 {/* Submit Button */}
                                 <div className='ml-5'>
                                     <button type="submit" className="px-5 py-2 bg-yellow text-white fw-bolder" disabled={loading}>
-                                        {loading ? 'Submitting...' : 'Add Semi-Finished Product'}
+                                        {loading ? 'Updating...' : 'Update Semi-Finished Product'}
                                     </button>
                                 </div>
 
@@ -230,4 +247,4 @@ function AddSemiFinished() {
     );
 }
 
-export default AddSemiFinished;
+export default EditSeminFinished;

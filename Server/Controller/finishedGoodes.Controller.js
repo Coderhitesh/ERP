@@ -83,7 +83,7 @@ exports.getAllFinishedGoods = async (req, res) => {
 // Get a single finished good by ID
 exports.getSingleFinishedGood = async (req, res) => {
     try {
-        const { id } = req.params; // Extract the finished good ID from the URL
+        const id = req.params._id; // Extract the finished good ID from the URL
 
         const finishedGood = await FinishedGood.findById(id).populate('semiFinishedGoods'); // Populate semi-finished goods
         if (!finishedGood) {
@@ -109,7 +109,7 @@ exports.getSingleFinishedGood = async (req, res) => {
 // Update a finished good by ID
 exports.updateFinishedGood = async (req, res) => {
     try {
-        const { id } = req.params; // Extract the finished good ID from the URL
+        const id = req.params._id; // Extract the finished good ID from the URL
 
         // Find the finished good and update it with the provided data
         const updatedFinishedGood = await FinishedGood.findByIdAndUpdate(id, req.body, {
@@ -141,7 +141,7 @@ exports.updateFinishedGood = async (req, res) => {
 // Delete a finished good by ID
 exports.deleteFinishedGood = async (req, res) => {
     try {
-        const { id } = req.params; // Extract the finished good ID from the URL
+        const id = req.params._id; // Extract the finished good ID from the URL
 
         const deletedFinishedGood = await FinishedGood.findByIdAndDelete(id);
         if (!deletedFinishedGood) {

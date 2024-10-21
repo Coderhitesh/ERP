@@ -9,7 +9,7 @@ exports.createSemiFinished = async (req, res) => {
         if (!unitPrice) emptyField.push('unitPrice');
         if (!rawMaterials) emptyField.push('rawMaterials');
         if (!productionDate) emptyField.push('productionDate');
-        if (!Roles) emptyField.push('Roles');
+        // if (!Roles) emptyField.push('Roles');
         
         if (emptyField.length > 0) {
             return res.status(400).json({
@@ -72,7 +72,7 @@ exports.getSemiFinished = async (req, res) => {
 exports.getSingleSeminFinished = async (req, res) => {
     try {
         const id = req.params._id;
-        const singleSemiFinished = await SemiFinished.findById(id).populate(rawMaterials);
+        const singleSemiFinished = await SemiFinished.findById(id);
         if (!singleSemiFinished) {
             return res.status(404).json({
                 success: false,
@@ -121,7 +121,7 @@ exports.deleteSemiFinshied = async (req, res) => {
 
 exports.updateSemiFinished = async (req, res) => {
     try {
-        const { id } = req.params;  // Get the ID from the route parameters
+        const id = req.params._id;  // Get the ID from the route parameters
         const { productName, quantity, unitPrice, rawMaterials, productionDate, expirationDate, Roles } = req.body;
 
         // Find the semi-finished product by ID

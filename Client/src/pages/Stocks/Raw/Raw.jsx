@@ -50,9 +50,15 @@ const Raw = () => {
     return (
         <div className='container-fluid'>
             <div className='col-12'>
-                <div className='head-part w-50'>
+                {/* <div className='head-part w-50'>
                     <h1>All Raw Products</h1>
-                </div>
+                </div> */}
+                <h2 className="d-flex justify-content-between align-items-center">
+                All Raw
+                <Link to="/Stock-Manage/AddRaw">
+                    <button className="btn btn-success">Add Raw</button>
+                </Link>
+            </h2>
                 <div className='card-body bg-white'>
                     <div className="input-group mb-3">
                         <input
@@ -101,7 +107,7 @@ const Raw = () => {
                                     <td className='d-flex gap-2'>
                                         <Link to={`/Stock-Manage/edit-raw/${raw._id}`} className='btn btn-primary'>Edit</Link>
                                         <button className='btn btn-danger' onClick={() => handleDelete(raw._id)}>Delete</button>
-                                        </td>
+                                    </td>
                                 </tr>
                             ))}
 

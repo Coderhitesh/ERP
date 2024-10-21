@@ -37,7 +37,7 @@ const AddVendor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate phone number
     if (!isValidPhoneNumber(formData.contactNumber)) {
       toast.error('Phone number must be exactly 10 digits');

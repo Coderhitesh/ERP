@@ -33,6 +33,12 @@ import AllPerforma from '../pages/Quotations/AllPerforma';
 import AllVendors from '../pages/Add-vendor/AllVendors';
 import EditRow from '../pages/Stocks/Raw/EditRow';
 import Semifinished from '../pages/Stocks/SemiFinished/Semifinished';
+import AddSemiFinished from '../pages/Stocks/SemiFinished/AddSemiFinished';
+import EditSeminFinished from '../pages/Stocks/SemiFinished/EditSeminFinished';
+import AllFinished from '../pages/Finished/AllFinished';
+import AddFinished from '../pages/Finished/AddFinished';
+import EditFinished from '../pages/Finished/EditFinished';
+import EditPurchaseOrder from '../pages/Invoices/Purchase order/EditPurchaseOrder';
 const Home = () => {
   return (
     <div className="conatiner">
@@ -70,7 +76,8 @@ const Home = () => {
             <Route path='/bills/bill-preview' element={<BillPreview />} />
 
             <Route path='/order/all-purchase-order' element={<AllPurchaseOrder />} />
-            <Route path='/order/create-purchase-order/:id' element={<PurchaseOrder />} />
+            {/* <Route path='/order/edit-purchase-order/:id' element={<EditPurchaseOrder />} /> */}
+            <Route path='/order/create-purchase-order' element={<PurchaseOrder />} />
             <Route path='/order/all-manufacturing-order' element={<AllManufactOrder />} />
             <Route path='/order/create-manufacturing-order' element={<ManufactureOrder />} />
 
@@ -83,6 +90,8 @@ const Home = () => {
             <Route path='/Stock-Manage/Make-Raw-Order' element={<OrderForm />} />
 
             <Route path='/Stock-Manage/Semi-Finshied' element={<Semifinished />} />
+            <Route path='/Stock-Manage/create-semi-finished' element={<AddSemiFinished />} />
+            <Route path='/Stock-Manage/edit-semi-finished/:id' element={<EditSeminFinished />} />
 
             {/* ---------------------Bills And Challan ---------------------- */}
             <Route path='/Bills/Create-Bills' element={<CreateBills />} />
@@ -98,6 +107,12 @@ const Home = () => {
 
             {/* -------------------- Reports ---------------------- */}
             <Route path='/reports/daily-reports' element={<DailyReport />} />
+
+            {/* -------------------- finished ---------------------- */}
+            {/* <Route path='/Stock-Manage/Finshied' element={<DailyReport />} /> */}
+            <Route path='/Stock-Manage/Finshied' element={<AllFinished />} />
+            <Route path='/Stock-Manage/Add-Finshied' element={<AddFinished />} />
+            <Route path='/Stock-Manage/edit-Finshied/:id' element={<EditFinished />} />
 
 
 
